@@ -4,4 +4,3 @@ vendor
 includes/.env
 includes/.env_local
 includes/database_old.php
-ca.pem
