@@ -3,6 +3,10 @@
 require_once __DIR__ . '/../includes/app.php';
 
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 use MVC\Router;
 use Controllers\LoginController;
 use Controllers\CitaController;
