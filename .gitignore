@@ -1,6 +1,9 @@
 node_modules
 vendor
 .DS_Store
+controllers/APIController_old.php
 includes/.env
 includes/.env_local
+includes/.env_remoto
 includes/database_old.php
+includes/database_new.php

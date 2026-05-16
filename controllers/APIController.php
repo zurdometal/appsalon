@@ -16,6 +16,9 @@ class APIController {
     }
 
     public static function guardar() {
+
+        header('Content-Type: application/json');
+
         // Almacena la cita en la base de datos y devuelve una respuesta en formato JSON   
         $cita = new Cita($_POST);
         $resultado = $cita->guardar();
@@ -26,16 +29,19 @@ class APIController {
         $idServicios = explode(",", $_POST['servicios']);
 
         foreach($idServicios as $idServicio) {
+
             $args = [
                 'citaId' => $id,
-                'servicioId' => $idServicio 
+                'servicioId' => trim($idServicio)
             ];
             
             $citaservicio = new CitaServicio($args);
             $citaservicio->guardar();
         }
         // Retorna una respuesta en formato JSON con el resultado de la operación
-        echo json_encode(['resultado' => $resultado]);
+        echo json_encode([
+            'resultado' => $resultado
+        ]);
     }
 
     
