@@ -11,19 +11,21 @@ mysqli_ssl_set(
     null
 );
 
-mysqli_real_connect(
+$conexion = mysqli_real_connect(
     $mysqli,
-    $_ENV['DB_HOST'],
-    $_ENV['DB_USER'],
-    $_ENV['DB_PASSWORD'],
-    $_ENV['DB_NAME'],
-    $_ENV['DB_PORT'],
+    getenv('DB_HOST'),
+    getenv('DB_USER'),
+    getenv('DB_PASSWORD'),
+    getenv('DB_NAME'),
+    (int)getenv('DB_PORT'),
     null,
     MYSQLI_CLIENT_SSL
 );
 
-$mysqli->set_charset("utf8mb4");
-
-if (!$mysqli) {
+if (!$conexion) {
     die("Error de conexión: " . mysqli_connect_error());
 }
+
+$mysqli->set_charset("utf8mb4");
+
+$db = $mysqli;
