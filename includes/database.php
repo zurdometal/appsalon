@@ -1,12 +1,29 @@
 <?php
-// Conexión a la base de datos
-$db = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASSWORD'], $_ENV['DB_NAME']);
 
-$db->set_charset("utf8");
+$mysqli = mysqli_init();
 
-if (!$db) {
-    echo "Error: No se pudo conectar a MySQL.";
-    echo "errno de depuración: " . mysqli_connect_errno();
-    echo "error de depuración: " . mysqli_connect_error();
-    exit;
+mysqli_ssl_set(
+    $mysqli,
+    null,
+    null,
+    __DIR__ . '/ca.pem',
+    null,
+    null
+);
+
+mysqli_real_connect(
+    $mysqli,
+    $_ENV['DB_HOST'],
+    $_ENV['DB_USER'],
+    $_ENV['DB_PASSWORD'],
+    $_ENV['DB_NAME'],
+    $_ENV['DB_PORT'],
+    null,
+    MYSQLI_CLIENT_SSL
+);
+
+$mysqli->set_charset("utf8mb4");
+
+if (!$mysqli) {
+    die("Error de conexión: " . mysqli_connect_error());
 }
