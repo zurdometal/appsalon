@@ -355,7 +355,8 @@ async function reservarCita() {
 
     const {id, nombre, fecha, hora, servicios} = cita;
 
-    const idServicios = servicios.map(servicio => servicio.id).join(', ');
+    //const idServicios = servicios.map(servicio => servicio.id).join(', ');
+    const idServicios = servicios.map(servicio => servicio.id).join(',');
     
     // Agregar los datos al FormData segun como los reciba la API de PHP en $_POST
     datos.append('fecha', fecha);
