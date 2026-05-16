@@ -31,7 +31,9 @@ class LoginController {
                         
                         if($passwordCorrecto) {
                             // Autenticar el usuario
-                            session_start();
+                            if (session_status() === PHP_SESSION_NONE) {
+                                session_start();
+                            }
 
                             $_SESSION['id'] = $usuario->id;
                             $_SESSION['nombre'] = $usuario->nombre . " " . $usuario->apellido;
