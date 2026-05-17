@@ -376,13 +376,13 @@ async function reservarCita() {
             
         });
 
-        //const resultado = await respuesta.json();
+        const resultado = await respuesta.json();
 
-        const texto = await respuesta.text();
+        //const texto = await respuesta.text();
 
-        console.log(texto);
+        //console.log(texto);
 
-        return;
+        //return;
         
         console.log(resultado.resultado);
 
