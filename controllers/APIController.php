@@ -38,8 +38,8 @@ class APIController {
             $citaservicio = new CitaServicio($args);
             $citaservicio->guardar();
         }
-        var_dump($resultado);
-        exit;
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
         // Retorna una respuesta en formato JSON con el resultado de la operación
         echo json_encode([
             'resultado' => $resultado
