@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+ob_start();
 
 require_once __DIR__ . '/../includes/app.php';
 
@@ -71,3 +73,5 @@ $router->post('/servicios/eliminar', [Controllers\ServicioController::class, 'el
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
+
+ob_end_flush();

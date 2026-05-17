@@ -44,6 +44,7 @@ class APIController {
         echo json_encode([
             'resultado' => $resultado
         ]);
+        exit;
     }
 
     
